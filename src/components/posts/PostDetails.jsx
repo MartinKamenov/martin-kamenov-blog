@@ -23,6 +23,6 @@ const PostDetails = ({ post }) => {
         hasCardContent
         hasDescription/>
     );
-}
+};
  
 export default PostDetails;
