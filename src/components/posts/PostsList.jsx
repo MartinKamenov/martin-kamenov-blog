@@ -9,7 +9,6 @@ const PostList = () => (
         <Query query={queries.ALL_POSTS_QUERY}>
             {
                 ({ loading, error, data }) => {
-                    debugger;
                     if(loading || error) {
                         return <Progressbar message='Fetching posts'/>;
                     }

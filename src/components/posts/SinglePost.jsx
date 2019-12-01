@@ -2,33 +2,28 @@ import React from 'react';
 import { Query } from 'react-apollo';
 
 import queries from '../../graphql/queries';
+import Progressbar from '../common/loading/Progressbar';
 
-const SinglePost = ({match: { params: {id} }}) => {
+const SinglePost = ({ match: { params: { id } }}) => {
     const getPostContent = (post) => {
         return (
             <div>
-                <h1></h1>
+                <h1>{post.title}</h1>
             </div>
         );
-    }
+    };
     return (
         <Query query={queries.SINGLE_POST_QUERY} variables={{ id }}>
             {({ loading, error, data }) => {
-                debugger;
-                if(loading) {
-                    return <h4>Loading...</h4>
-                }
-                if(error) {
-                    console.log(error);
+                if(loading || error) {
+                    return <Progressbar message='Fetching posts'/>;
                 }
 
                 const post = data.post;
-                return (
-                    getPostContent(post)
-                );
+                return getPostContent(post);
             }}
         </Query>
     );
-}
+};
  
 export default SinglePost;

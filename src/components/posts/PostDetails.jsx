@@ -5,7 +5,7 @@ const PostDetails = ({ post }) => {
     return (
         <CardComponent header={{
             src: 'https://avatars3.githubusercontent.com/u/24592428?s=460&v=4',
-            link: `/aboutme`,
+            link: '/aboutme',
             name: post.title,
             subheader: `${post.subTitle}\n${post.updated}`
         }}
