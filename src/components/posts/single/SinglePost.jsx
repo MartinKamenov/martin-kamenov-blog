@@ -18,7 +18,7 @@ const SinglePost = ({ match: { params: { id } }}) => {
                 <h1>{post.title}</h1>
                 <h5>{post.subTitle}</h5>
                 <div className='date-field'>{formattedDate}</div>
-                <img className='main-image' src={post.imageUrl}/>
+                <img alt={post.title} className='main-image' src={post.imageUrl}/>
                 <p>{post.content}</p>
             </div>
         );
