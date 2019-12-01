@@ -3,9 +3,7 @@ import CardComponent from '../common/card/Card';
 import dateService, { dateFormatTypes } from '../../service/date.service';
 
 const PostDetails = ({ post }) => {
-    const date = new Date();
-    date.setTime(post.updated);
-    const formattedDate = dateService.formatDate(date, dateFormatTypes.Material);
+    const formattedDate = dateService.formatDate(dateService.getDateFromTime(post.updated), dateFormatTypes.Material);
 
     return (
         <CardComponent header={{

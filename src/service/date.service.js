@@ -35,7 +35,6 @@ export const dateFormatTypes = {
 
 const dateFormats = {
     materialCardExample: (date) => {
-        debugger;
         return `${monthsLong[date.getMonth()]} ${date.getDate()}, ${date.getFullYear()}\n${date.getHours()}:${date.getMinutes()}`;
     }
 };
@@ -43,6 +42,11 @@ const dateFormats = {
 const dateService = {
     formatDate: (date, format) => {
         return dateFormats[format](date);
+    },
+    getDateFromTime: (time) => {
+        const date = new Date();
+        date.setTime(time);
+        return date;
     }
 };
 
