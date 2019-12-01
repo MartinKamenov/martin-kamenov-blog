@@ -1,13 +1,18 @@
 import React from 'react';
 import CardComponent from '../common/card/Card';
+import dateService, { dateFormatTypes } from '../../service/date.service';
 
 const PostDetails = ({ post }) => {
+    const date = new Date();
+    date.setTime(post.updated);
+    const formattedDate = dateService.formatDate(date, dateFormatTypes.Material);
+
     return (
         <CardComponent header={{
             src: 'https://avatars3.githubusercontent.com/u/24592428?s=460&v=4',
             link: '/aboutme',
             name: post.title,
-            subheader: `${post.subTitle}\n${post.updated}`
+            subheader: `${post.subTitle}\n${formattedDate}`
         }}
         cardMedia={{
             link: `/posts/${post.id}`,
@@ -15,10 +20,10 @@ const PostDetails = ({ post }) => {
             title: post.title
         }}
         cardContent={{
-            description: post.description
+            description: post.description || 'Post has no description'
         }}
         collapse={{
-            description: post.description
+            description: post.content ? post.content.substring(0, 100) : 'No content provided' 
         }}
         hasCardContent
         hasDescription/>
