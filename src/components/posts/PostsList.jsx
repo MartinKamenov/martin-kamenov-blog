@@ -2,6 +2,7 @@ import React from 'react';
 import { Query } from 'react-apollo';
 import queries from '../../graphql/queries';
 import PostDetails from './PostDetails';
+import Progressbar from '../common/loading/Progressbar';
 
 const PostList = () => (
     <div className='row' style={{ marginTop: 10 }}>
@@ -9,7 +10,7 @@ const PostList = () => (
             {
                 ({ loading, error, data }) => {
                     if(loading) {
-                        return <h4>Loading...</h4>;
+                        return <Progressbar message='Fetching posts'/>;
                     }
                     if(error) {
                         console.log(error);
