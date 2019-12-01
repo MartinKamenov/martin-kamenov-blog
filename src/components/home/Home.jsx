@@ -2,9 +2,13 @@ import React from 'react';
 
 import './Home.css';
 
+import PostList from '../posts/PostsList';
+
 const Home = () => {
     return (
-        <div>Content</div>
+        <div className='container'>
+            <PostList/>
+        </div>
     );
 };
  
