@@ -1,0 +1,6 @@
+.main-image {
+    width: calc(100% - 200px);
+    margin: auto;
+    border-radius: 20px;
+    max-width: 500px;
+}

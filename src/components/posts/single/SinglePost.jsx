@@ -1,14 +1,18 @@
 import React from 'react';
 import { Query } from 'react-apollo';
 
-import queries from '../../graphql/queries';
-import Progressbar from '../common/loading/Progressbar';
+import queries from '../../../graphql/queries';
+import Progressbar from '../../common/loading/Progressbar';
+
+import './SinglePost.css';
 
 const SinglePost = ({ match: { params: { id } }}) => {
     const getPostContent = (post) => {
         return (
-            <div>
+            <div className='center-container white-content'>
                 <h1>{post.title}</h1>
+                <h5>{post.subTitle}</h5>
+                <img className='main-image' src={post.imageUrl}/>
             </div>
         );
     };
