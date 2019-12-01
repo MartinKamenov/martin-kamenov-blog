@@ -1,27 +1,32 @@
 import React from 'react';
 import { Query } from 'react-apollo';
 import queries from '../../graphql/queries';
+import PostDetails from './PostDetails';
 
 const PostList = () => (
-    <Query query={queries.ALL_POSTS_QUERY}>
-        {
-            ({ loading, error, data }) => {
-                debugger;
-                if(loading) {
-                    return <h4>Loading...</h4>
-                }
-                if(error) {
-                    console.log(error);
-                }
+    <div className='row' style={{ marginTop: 10 }}>
+        <Query query={queries.ALL_POSTS_QUERY}>
+            {
+                ({ loading, error, data }) => {
+                    debugger;
+                    if(loading) {
+                        return <h4>Loading...</h4>
+                    }
+                    if(error) {
+                        console.log(error);
+                    }
 
-                const posts = data.posts;
+                    const posts = data.posts;
 
-                return posts.map((post) => (
-                    <div key={post.id}>{post.title}</div>
-                ));
+                    return posts.map((post) => (
+                        <div className='col-md-4 col-sm-6'>
+                            <PostDetails key={post.id} post={post}/>
+                        </div>
+                    ));
+                }
             }
-        }
-    </Query>
+        </Query>
+    </div>
 );
  
 export default PostList;
