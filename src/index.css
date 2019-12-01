@@ -19,3 +19,23 @@ code {
 .white-content {
   color: white;
 }
+
+.slow-transition-container {
+  opacity: 1;
+  -webkit-animation-name: fadeIn; /* Safari 4.0 - 8.0 */
+  -webkit-animation-duration: 4s; /* Safari 4.0 - 8.0 */
+  animation-name: fadeIn;
+  animation-duration: 4s;
+}
+
+/* Safari 4.0 - 8.0 */
+@-webkit-keyframes fadeIn {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}
+
+/* Standard syntax */
+@keyframes fadeIn {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}

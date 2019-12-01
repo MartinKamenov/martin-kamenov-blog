@@ -14,7 +14,7 @@ const SinglePost = ({ match: { params: { id } }}) => {
             dateFormatTypes.Material
         );
         return (
-            <div className='center-container white-content'>
+            <div className='center-container white-content slow-transition-container'>
                 <h1>{post.title}</h1>
                 <h5>{post.subTitle}</h5>
                 <div className='date-field'>{formattedDate}</div>
