@@ -5,24 +5,9 @@ import queries from '../../../graphql/queries';
 import Progressbar from '../../common/loading/Progressbar';
 
 import './SinglePost.css';
-import dateService, { dateFormatTypes } from '../../../service/date.service';
+import PostContent from './PostContent';
 
 const SinglePost = ({ match: { params: { id } }}) => {
-    const getPostContent = (post) => {
-        const formattedDate = dateService.formatDate(
-            dateService.getDateFromTime(post.updated),
-            dateFormatTypes.Material
-        );
-        return (
-            <div className='center-container white-content slow-transition-container'>
-                <h1>{post.title}</h1>
-                <h5>{post.subTitle}</h5>
-                <div className='date-field'>{formattedDate}</div>
-                <img alt={post.title} className='main-image' src={post.imageUrl}/>
-                <p>{post.content}</p>
-            </div>
-        );
-    };
     return (
         <Query query={queries.SINGLE_POST_QUERY} variables={{ id }}>
             {({ loading, error, data }) => {
@@ -31,7 +16,7 @@ const SinglePost = ({ match: { params: { id } }}) => {
                 }
 
                 const post = data.post;
-                return getPostContent(post);
+                return <PostContent post={post}/>;
             }}
         </Query>
     );
