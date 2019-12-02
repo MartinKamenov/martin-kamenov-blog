@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Route } from 'react-router-dom';
 import Navbar from '../common/navbar/Navbar';
 
 import './RoutingComponent.css';
-import SinglePost from '../posts/SinglePost';
+import SinglePost from '../posts/single/SinglePost';
 
 const RouterComponent = () => {
     return (

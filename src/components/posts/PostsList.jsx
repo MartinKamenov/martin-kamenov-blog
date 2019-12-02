@@ -5,7 +5,7 @@ import PostDetails from './PostDetails';
 import Progressbar from '../common/loading/Progressbar';
 
 const PostList = () => (
-    <div className='row' style={{ marginTop: 10 }}>
+    <div style={{ marginTop: 10 }}>
         <Query query={queries.ALL_POSTS_QUERY}>
             {
                 ({ loading, error, data }) => {
@@ -15,11 +15,17 @@ const PostList = () => (
 
                     const posts = data.posts;
 
-                    return posts.map((post) => (
-                        <div className='col-md-4 col-sm-6'>
-                            <PostDetails key={post.id} post={post}/>
+                    return (
+                        <div className='row slow-transition-container'>
+                            {
+                                posts.map((post) => (
+                                    <div className='col-md-4 col-sm-6'>
+                                        <PostDetails key={post.id} post={post}/>
+                                    </div>
+                                ))
+                            }
                         </div>
-                    ));
+                    );
                 }
             }
         </Query>
