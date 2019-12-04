@@ -19,6 +19,8 @@ const Content = ({ content }) => {
                 return <h6 className='content-element header-element'>{element.text}</h6>;
             case 'p':
                 return <p className='content-element paragraph-element'>{element.text}</p>;
+            case 'code':
+                return <div className='content-element code-element'>{element.text}</div>;
             case 'img':
                 return <img
                 className='generic-image'
