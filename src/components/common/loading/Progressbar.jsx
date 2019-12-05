@@ -8,7 +8,7 @@ const Progressbar = ({ message, color }) => (
         width: '200px',
         height: '100px',
         textAlign: 'center'
-    }} className='white-content'>
+    }} className='black-content'>
         <CircularProgress color={color || 'secondary'} />
         <div>{message || 'Loading'}</div>
     </div>
