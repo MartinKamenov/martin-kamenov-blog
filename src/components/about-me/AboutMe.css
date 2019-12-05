@@ -1,0 +1,32 @@
+.about-me-container {
+    width: 80%;
+    margin: auto;
+}
+
+.company-logo {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    border: 1px solid black;
+}
+
+.company-name {
+    padding: 5px;
+    border: 1px solid black;
+    border-radius: 5px;
+}
+
+.company-container {
+    padding: 5px;
+    margin-bottom: 20px;
+}
+
+.company-info {
+    text-align: left;
+}
+
+.porfolio-image {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+}
