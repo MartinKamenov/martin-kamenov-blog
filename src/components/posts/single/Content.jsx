@@ -22,7 +22,7 @@ const Content = ({ content }) => {
             case 'code':
                 return <div className='content-element code-element'>{element.text}</div>;
             case 'link':
-                return <a href={element.src} className='link-element code-element'>{element.link}</a>;
+                return <a href={element.src} className='content-element link-element'>{element.link}</a>;
             case 'img':
                 return <img
                 className='generic-image'

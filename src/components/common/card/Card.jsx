@@ -17,6 +17,8 @@ import MoreVertIcon from '@material-ui/icons/MoreVert';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
+import './Card.css';
+
 const useStyles = makeStyles(theme => ({
     card: {
         maxWidth: 345,

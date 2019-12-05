@@ -4,7 +4,8 @@
     border-radius: 20px;
     max-width: 500px;
     background-color: white;
-    border: 2px solid #303d8c;
+    margin-top: 5px;
+    margin-bottom: 5px;
 }
 
 .code-element {
@@ -21,6 +22,12 @@
     margin: auto;
     margin-bottom: 5px;
     white-space: pre-line;
+}
+
+.link-element {
+    display: block;
+    color: blue;
+    text-decoration: none;
 }
 
 .header-element {
