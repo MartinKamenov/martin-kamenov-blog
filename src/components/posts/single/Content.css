@@ -26,9 +26,21 @@
 .header-element {
     margin-top: 15px;
     margin-bottom: 10px;
-    border-bottom: 2px solid black;
 }
 
+.content h1, .content h2 {
+    margin-top: 15px;
+    margin-bottom: 10px;
+    border-bottom: 2px solid black;
+    padding-bottom: 5px;
+}
+
+.content h3, .content h4, .content h5, .content h6 {
+    margin-top: 15px;
+    margin-bottom: 10px;
+    border-bottom: 2px solid #aaaaaa;
+    padding-bottom: 5px;
+}
 .paragraph-element {
     padding: 5px;
 }
