@@ -21,6 +21,8 @@ const Content = ({ content }) => {
                 return <p className='content-element paragraph-element'>{element.text}</p>;
             case 'code':
                 return <div className='content-element code-element'>{element.text}</div>;
+            case 'link':
+                return <a href={element.src} className='link-element code-element'>{element.link}</a>;
             case 'img':
                 return <img
                 className='generic-image'
