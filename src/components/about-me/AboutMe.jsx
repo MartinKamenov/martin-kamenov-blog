@@ -1,11 +1,12 @@
 import React from 'react';
 
 import './AboutMe.css';
+import { Link } from 'react-router-dom';
 
 const AboutMe = () => {
     return (
         <div className='center-container about-me-container'>
-            <h1>Martin Kamenov</h1>
+            <h1>Martin Kamenov <Link to='/' className='btn btn-success'>Back to my posts</Link></h1>
             <img alt='my-profile' className='porfolio-image' src='https://avatars3.githubusercontent.com/u/24592428?s=460&v=4'/>
             <div>
                 <h2 style={{ fontWeight: 'bold', marginBottom: 10, marginTop: 20 }}>Experience</h2>
