@@ -27,6 +27,20 @@ const queries = {
             imageUrl
             content
         }
+    }`,
+    MY_PROFILE_QUERY: gql`
+    query ProfileQuery($id: String) {
+        profile(id: $id) {
+          id
+          firstName
+          lastName
+          imageUrl
+          companies {
+            name
+            description
+            imageUrl
+          }
+        }
     }`
 };
 
