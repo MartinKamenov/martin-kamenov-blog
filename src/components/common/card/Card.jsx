@@ -126,9 +126,11 @@ const CardComponent = ({
             </CardActions>
             <Collapse in={expanded} timeout="auto" unmountOnExit>
                 <CardContent>
-                    <Typography paragraph>
-                        {collapse.description}
-                    </Typography>
+                    {collapse.description.map((c, i) => (
+                        <Typography key={i} component={c.type}>
+                            {c.text}
+                        </Typography>
+                    ))}
                 </CardContent>
             </Collapse>
             </>) : null}

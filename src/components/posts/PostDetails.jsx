@@ -21,7 +21,7 @@ const PostDetails = ({ post }) => {
             description: post.description || 'Post has no description'
         }}
         collapse={{
-            description: post.content ? post.content.substring(0, 100) : 'No content provided' 
+            description: (JSON.parse(post.content)).content.slice(0, 3)
         }}
         hasCardContent
         hasDescription/>
