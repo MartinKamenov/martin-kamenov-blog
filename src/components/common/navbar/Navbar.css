@@ -2,8 +2,40 @@
     width: 100%;
     height: 50px;
     line-height: 50px;
+    padding: 5px;
+    background-color: #282520;
 }
 
-.main-nav {
-    margin-left: 20px;
+.left-navbar-container {
+    float: left;
+    margin-left: 15%;
+    height: 40px;
+}
+
+.right-navbar-container {
+    float: right;
+    margin-right: 15%;
+    height: 40px;
+}
+
+.navbar-element {
+    margin-right: 20px;
+    display: inline-block;
+    height: 40px;
+}
+
+.nav-text {
+    text-decoration: none !important;
+    color: white;
+    padding: 3px;
+}
+
+.main-navbar-btn {
+}
+
+.main-navbar-btn:before {
+}
+
+.main-navbar-btn:after {
+    
 }
