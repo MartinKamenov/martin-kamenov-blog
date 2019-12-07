@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import CircularProgress from '@material-ui/core/CircularProgress';
 
@@ -13,5 +14,10 @@ const Progressbar = ({ message, color }) => (
         <div>{message || 'Loading'}</div>
     </div>
 );
+
+Progressbar.propTypes = {
+    message: PropTypes.string,
+    color: PropTypes.string
+};
  
 export default Progressbar;

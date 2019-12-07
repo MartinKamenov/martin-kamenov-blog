@@ -1,5 +1,6 @@
 import React from 'react';
 import CardComponent from '../common/card/Card';
+import PropTypes from 'prop-types';
 import dateService, { dateFormatTypes } from '../../service/date.service';
 
 const PostDetails = ({ post }) => {
@@ -23,9 +24,19 @@ const PostDetails = ({ post }) => {
         collapse={{
             description: (JSON.parse(post.content)).content.slice(0, 3)
         }}
-        hasCardContent
-        hasDescription/>
+        hasCardContent={!!post.content}
+        hasDescription={!!post.description}/>
     );
+};
+
+PostDetails.propTypes = {
+    post: PropTypes.shape({
+        title: PropTypes.string.isRequired,
+        subTitle: PropTypes.string.isRequired,
+        imageUrl: PropTypes.string.isRequired,
+        description: PropTypes.string,
+        content: PropTypes.string.isRequired
+    }).isRequired
 };
  
 export default PostDetails;
