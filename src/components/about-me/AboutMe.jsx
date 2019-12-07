@@ -25,7 +25,7 @@ const AboutMe = () => {
         <>
             { profile ? (
                 <div className='center-container about-me-container slow-transition-container'>
-                    <h1>{profile.firstName} {profile.lastName} <Link to='/' className='btn btn-success'>Back to my posts</Link></h1>
+                    <h1>{profile.firstName} {profile.lastName} <Link to='/posts' className='btn btn-primary'>Back to my posts</Link></h1>
                     <img alt='my-profile' className='porfolio-image' src={profile.imageUrl}/>
                     <div>
                         <h2 style={{ fontWeight: 'bold', marginBottom: 10, marginTop: 20 }}>Experience</h2>
