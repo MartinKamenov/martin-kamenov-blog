@@ -5,7 +5,7 @@ import PostDetails from './PostDetails';
 import Progressbar from '../common/loading/Progressbar';
 
 const PostList = () => (
-    <div style={{ marginTop: 10 }}>
+    <div className='container' style={{ marginTop: 10 }}>
         <Query query={queries.ALL_POSTS_QUERY}>
             {
                 ({ loading, error, data }) => {
