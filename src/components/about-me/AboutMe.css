@@ -22,6 +22,8 @@
 }
 
 .company-info {
+    height: 400px;
+    overflow-y: auto;
     text-align: left;
 }
 
