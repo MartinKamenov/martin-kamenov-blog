@@ -156,8 +156,10 @@ CardComponent.propTypes = {
         description: PropTypes.string
     }),
     collapse: PropTypes.shape({
-        description: PropTypes.string
-    })
+        description: PropTypes.array
+    }),
+    hasDescription: PropTypes.bool,
+    hasCardContent: PropTypes.bool
 };
 
 export default CardComponent;

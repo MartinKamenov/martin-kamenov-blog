@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const Company = ({ company }) => {
     return (
@@ -13,6 +14,14 @@ const Company = ({ company }) => {
             </div>
         </div>
     );
+};
+
+Company.propTypes = {
+    company: PropTypes.shape({
+        name: PropTypes.string.isRequired,
+        imageUrl: PropTypes.string.isRequired,
+        description: PropTypes.string.isRequired
+    }).isRequired
 };
  
 export default Company;

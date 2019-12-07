@@ -19,8 +19,8 @@ const PostList = () => (
                         <div className='row slow-transition-container'>
                             {
                                 posts.map((post) => (
-                                    <div className='col-md-4 col-sm-6'>
-                                        <PostDetails key={post.id} post={post}/>
+                                    <div key={post.id} className='col-md-4 col-sm-6'>
+                                        <PostDetails post={post}/>
                                     </div>
                                 ))
                             }

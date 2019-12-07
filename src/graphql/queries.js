@@ -35,11 +35,7 @@ const queries = {
           firstName
           lastName
           imageUrl
-          companies {
-            name
-            description
-            imageUrl
-          }
+          companies
         }
     }`
 };
