@@ -10,7 +10,9 @@ const Company = ({ company }) => {
                 className='company-logo'
                 src={company.imageUrl}/>
             <div className='company-info'>
-                {company.description}
+                {company.description.split('\n').map((li, i) => (
+                    <li key={i}>{li}</li>
+                ))}
             </div>
         </div>
     );
