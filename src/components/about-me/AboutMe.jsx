@@ -19,6 +19,7 @@ const AboutMe = () => {
     }, [data, getProfileData]);
 
     const profile = data && data.profile ? data.profile : null;
+    const companies = profile && profile.companies ? JSON.parse(profile.companies) : [];
 
     return (
         <>
@@ -30,7 +31,7 @@ const AboutMe = () => {
                         <h2 style={{ fontWeight: 'bold', marginBottom: 10, marginTop: 20 }}>Experience</h2>
                         <div className='row'>
                             {
-                                profile.companies.map((company, i) => (
+                                companies.map((company, i) => (
                                     <Company company={company} key={i}/>
                                 ))
                             }
