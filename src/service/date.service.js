@@ -33,9 +33,18 @@ export const dateFormatTypes = {
     'Material': 'materialCardExample'
 };
 
+const leftPad = (number, targetLength) => {
+    var output = number + '';
+    while (output.length < targetLength) {
+        output = '0' + output;
+    }
+    return output;
+};
+
 const dateFormats = {
     materialCardExample: (date) => {
-        return `${monthsLong[date.getMonth()]} ${date.getDate()}, ${date.getFullYear()}\n${date.getHours()}:${date.getMinutes()}`;
+        return `${monthsLong[date.getMonth()]} ${date.getDate()}, ${date.getFullYear()} ` + 
+        `${leftPad(date.getHours(), 2)}:${leftPad(date.getMinutes(), 2)}`;
     }
 };
 
