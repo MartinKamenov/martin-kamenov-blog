@@ -8,6 +8,7 @@ import AboutMe from '../about-me/AboutMe';
 import './RoutingComponent.css';
 import PostList from '../posts/PostsList';
 import CustomNavbar from '../common/navbar/CustomNavbar';
+import Footer from '../common/footer/Footer';
 
 const RouterComponent = () => {
     return (
@@ -17,6 +18,7 @@ const RouterComponent = () => {
             <Route exact path="/posts" component={PostList} />
             <Route exact path="/aboutme" component={AboutMe} />
             <Route path="/posts/:id" component={SinglePost} />
+            <Footer/>
         </Router>
     );
 };
