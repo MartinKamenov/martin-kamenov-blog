@@ -16,6 +16,7 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import textFormat from '../../../service/text-format.service';
 
 import './Card.css';
 
@@ -58,6 +59,9 @@ const CardComponent = ({
     hasDescription,
     hasCardContent,
     handleLikeClick,
+    likes,
+    liked,
+    commentsLength,
     id
 }) => {
     const classes = useStyles();
@@ -66,6 +70,9 @@ const CardComponent = ({
     const handleExpandClick = () => {
         setExpanded(!expanded);
     };
+
+    const likesAndComments = `${textFormat.formatPluralForm('like', likes.length)}`
+    + ` and ${textFormat.formatPluralForm('comment', commentsLength)}`;
 
     return (
         <Card
@@ -108,11 +115,14 @@ const CardComponent = ({
             </CardContent>
             <CardActions disableSpacing>
                 <IconButton onClick={() => handleLikeClick(id)} aria-label="add to favorites">
-                    <FavoriteIcon color='secondary'/>
+                    <FavoriteIcon color={liked ? 'secondary' : 'action'}/>
                 </IconButton>
                 <IconButton aria-label="share">
                     <ShareIcon />
                 </IconButton>
+                <Typography variant='subtitle2'>
+                    { likesAndComments }
+                </Typography>
                 { hasDescription ? (
                     <IconButton
                         className={clsx(classes.expand, {

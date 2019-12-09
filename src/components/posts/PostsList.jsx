@@ -21,38 +21,43 @@ const PostList = () => {
                     id,
                     like: JSON.stringify(like)
                 }
-            })
+            });
         },
         [updateLikesMutation]
     );
 
     const handleLikeClick = (id) => {
         const postsCopy = [...posts];
-        const post = postsCopy.find((p) => p.id === id);
+        const postIndex = postsCopy.findIndex((p) => p.id === id);
+        const post = postsCopy[postIndex];
         if(!post) {
             return;
         }
 
-        const likes = post.likes;
+        const likes = JSON.parse(post.likes);
         let newLike = {
             token
         };
 
         if(!likes.find((l) => l.token === token)) {
-            newLike.action = 'Add';
+            newLike.action = 'add';
             likes.push({
                 token
-            })
+            });
         } else {
-            newLike.action = 'Remove';
+            newLike.action = 'remove';
             const index = likes.findIndex((l) => l.token === token);
             if(index > -1) {
                 likes.splice(index, 1);
             }
         }
 
+        post.likes = JSON.stringify(likes);
+        postsCopy[postIndex] = post;
+        setPosts(postsCopy);
+
         updateLikes(id, newLike);
-    }
+    };
 
     useEffect(() => {
         if(!data) {
