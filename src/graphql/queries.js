@@ -12,6 +12,8 @@ const queries = {
             updated
             imageUrl
             content
+            likes
+            comments
         }
     }
     `,
@@ -26,6 +28,8 @@ const queries = {
             updated
             imageUrl
             content
+            likes
+            comments
         }
     }`,
     MY_PROFILE_QUERY: gql`
@@ -36,6 +40,21 @@ const queries = {
           lastName
           imageUrl
           companies
+        }
+    }`,
+    UPDATE_LIKES_MUTATION: gql`
+    mutation UpdateLikesMutation($id: String!, $like: String!) {
+        updateLikes(id: $id, like: $like) {
+            id
+            title
+            subTitle
+            description
+            created
+            updated
+            imageUrl
+            content
+            likes
+            comments
         }
     }`
 };

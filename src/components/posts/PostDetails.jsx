@@ -1,10 +1,21 @@
 import React from 'react';
 import CardComponent from '../common/card/Card';
 import PropTypes from 'prop-types';
+import { useSelector } from 'react-redux';
 import dateService, { dateFormatTypes } from '../../service/date.service';
 
-const PostDetails = ({ post }) => {
-    const formattedDate = dateService.formatDate(dateService.getDateFromTime(post.updated), dateFormatTypes.Material);
+const PostDetails = ({ post, handleLikeClick }) => {
+
+    const formattedDate = dateService
+        .formatDate(
+            dateService.getDateFromTime(post.updated),
+            dateFormatTypes.Material
+        );
+    
+    const likes = JSON.parse(post.likes);
+    const token = useSelector((state) => state.token);
+
+    const liked = !!(likes.find((like) => like.token === token));
 
     return (
         <CardComponent header={{
@@ -25,7 +36,12 @@ const PostDetails = ({ post }) => {
             description: (JSON.parse(post.content)).content.slice(0, 3)
         }}
         hasCardContent={!!post.content}
-        hasDescription={!!post.description}/>
+        hasDescription={!!post.description}
+        handleLikeClick={handleLikeClick}
+        likes={likes}
+        liked={liked}
+        commentsLength={(JSON.parse(post.comments)).length}
+        id={post.id}/>
     );
 };
 
