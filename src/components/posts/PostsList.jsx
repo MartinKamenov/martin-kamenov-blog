@@ -65,7 +65,11 @@ const PostList = () => {
         } else {
             setPosts(data.posts);
         }
-    }, [getPosts, data]);
+
+        if(updatedData) {
+            console.log('Likes were updated');
+        }
+    }, [getPosts, data, updatedData]);
 
     if(!data || !data.posts) {
         return (
