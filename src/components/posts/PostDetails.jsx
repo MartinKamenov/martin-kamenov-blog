@@ -3,7 +3,7 @@ import CardComponent from '../common/card/Card';
 import PropTypes from 'prop-types';
 import dateService, { dateFormatTypes } from '../../service/date.service';
 
-const PostDetails = ({ post }) => {
+const PostDetails = ({ post, handleLikeClick }) => {
     const formattedDate = dateService.formatDate(dateService.getDateFromTime(post.updated), dateFormatTypes.Material);
 
     return (
@@ -25,7 +25,9 @@ const PostDetails = ({ post }) => {
             description: (JSON.parse(post.content)).content.slice(0, 3)
         }}
         hasCardContent={!!post.content}
-        hasDescription={!!post.description}/>
+        hasDescription={!!post.description}
+        handleLikeClick={handleLikeClick}
+        id={post.id}/>
     );
 };
 

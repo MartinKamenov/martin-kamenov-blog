@@ -56,7 +56,9 @@ const CardComponent = ({
     cardContent = {},
     collapse = {},
     hasDescription,
-    hasCardContent
+    hasCardContent,
+    handleLikeClick,
+    id
 }) => {
     const classes = useStyles();
     const [expanded, setExpanded] = useState(false);
@@ -105,8 +107,8 @@ const CardComponent = ({
                 </Typography>
             </CardContent>
             <CardActions disableSpacing>
-                <IconButton aria-label="add to favorites">
-                    <FavoriteIcon />
+                <IconButton onClick={() => handleLikeClick(id)} aria-label="add to favorites">
+                    <FavoriteIcon color='secondary'/>
                 </IconButton>
                 <IconButton aria-label="share">
                     <ShareIcon />
