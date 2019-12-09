@@ -11,7 +11,8 @@ import uuid from 'uuid';
 
 let token = localStorage.getItem('likes-token');
 if(!token) {
-    localStorage.setItem('likes-token', uuid.v1);
+    token = uuid.v1();
+    localStorage.setItem('likes-token', token);
 }
 
 const reducer = (state = { token }, action) => {
@@ -25,7 +26,7 @@ const reducer = (state = { token }, action) => {
 const store = createStore(reducer);
 
 const apolloClient = new ApolloClient({
-    uri: 'https://martin-kamenov-blog-api.herokuapp.com/graphql'
+    uri: 'http://localhost:5000/graphql'
 });
 
 const App = () => (

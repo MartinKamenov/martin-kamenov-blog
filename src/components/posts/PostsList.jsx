@@ -1,35 +1,41 @@
-import React from 'react';
-import { Query } from 'react-apollo';
+import React, { useCallback, useEffect } from 'react';
+import { useLazyQuery } from 'react-apollo';
 import queries from '../../graphql/queries';
 import PostDetails from './PostDetails';
 import Progressbar from '../common/loading/Progressbar';
 
-const PostList = () => (
-    <div className='container' style={{ marginTop: 10 }}>
-        <Query query={queries.ALL_POSTS_QUERY}>
-            {
-                ({ loading, error, data }) => {
-                    if(loading || error) {
-                        return <Progressbar message='Fetching posts'/>;
-                    }
+const PostList = () => {
+    const [runQuery, { data }] = useLazyQuery(queries.ALL_POSTS_QUERY);
+    const getPosts = useCallback(() => runQuery({}), [runQuery]);
 
-                    const posts = data.posts;
+    useEffect(() => {
+        if(!data) {
+            getPosts();
+        }
+    }, [getPosts, data]);
 
-                    return (
-                        <div className='row slow-transition-container'>
-                            {
-                                posts.map((post) => (
-                                    <div key={post.id} className='col-md-4 col-sm-6'>
-                                        <PostDetails post={post}/>
-                                    </div>
-                                ))
-                            }
+    if(!data || !data.posts) {
+        return (
+            <div className='container' style={{ marginTop: 10 }}>
+                <Progressbar message='Fetching posts'/>
+            </div>
+        );
+    }
+
+    const posts = data.posts;
+    return (
+        <div className='container' style={{ marginTop: 10 }}>
+            <div className='row slow-transition-container'>
+                {
+                    posts.map((post) => (
+                        <div key={post.id} className='col-md-4 col-sm-6'>
+                            <PostDetails post={post}/>
                         </div>
-                    );
+                    ))
                 }
-            }
-        </Query>
-    </div>
-);
+            </div>
+        </div>
+    );
+};
  
 export default PostList;
