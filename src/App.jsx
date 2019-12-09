@@ -7,7 +7,7 @@ import './App.css';
 import '../node_modules/bootstrap/dist/css/bootstrap.css';
 
 const apolloClient = new ApolloClient({
-    uri: 'http://localhost:5000/graphql'
+    uri: 'https://martin-kamenov-blog-api.herokuapp.com/graphql'
 });
 
 const App = () => (
