@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useCallback } from 'react';
-import { useLazyQuery } from 'react-apollo';
+import { useLazyQuery, useMutation } from 'react-apollo';
 
 import queries from '../../../graphql/queries';
 import Progressbar from '../../common/loading/Progressbar';
@@ -13,19 +13,36 @@ const SinglePost = ({ match: { params: { id } }}) => {
 
     const [post, setPost] = useState(null);
 
+    const [updateCommentsMutation, { data: updatedData }] = useMutation(queries.UPDATE_COMMENTS_MUTATION);
+    const addComment = useCallback(
+        (comment) => {
+            updateCommentsMutation({
+                variables: {
+                    id,
+                    comment: JSON.stringify(comment)
+                }
+            });
+        },
+        [updateCommentsMutation, id]
+    );
+
     useEffect(() => {
         if(!data || !data.post) {
             getPost();
         } else {
             setPost(data.post);
         }
-    }, [data, getPost]);
+
+        if(updatedData) {
+            console.log('Comments were updated');
+        }
+    }, [data, getPost, updatedData]);
 
     if(!post) {
         return <Progressbar message='Fetching posts'/>;
     }
 
-    return <PostContent post={post}/>;
+    return <PostContent post={post} addComment={addComment}/>;
 };
  
 export default SinglePost;

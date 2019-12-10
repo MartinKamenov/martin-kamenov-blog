@@ -3,7 +3,8 @@ import TextField from '@material-ui/core/TextField';
 import './CommentSection.css';
 import { Button } from '@material-ui/core';
 
-const CommentSection = ({ comments }) => {
+const CommentSection = ({ post, addComment }) => {
+    const comments = JSON.parse(post.comments);
     const [newComment, setNewComment] = useState({
         username: '',
         text: ''
@@ -37,7 +38,7 @@ const CommentSection = ({ comments }) => {
                         value={newComment.text}
                         onChange={({ target: { value } }) => updateNewComment('text', value)} />
                 </div>
-                <Button color='primary' variant='contained'>ADD COMMENT</Button>
+                <Button onClick={() => addComment(newComment)} color='primary' variant='contained'>ADD COMMENT</Button>
             </div>
             <div style={{ marginTop: 20 }}>
                 {
