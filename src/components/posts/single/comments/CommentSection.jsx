@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import TextField from '@material-ui/core/TextField';
 import './CommentSection.css';
+import { Button } from '@material-ui/core';
 
 const CommentSection = ({ comments }) => {
     const [newComment, setNewComment] = useState({
@@ -26,7 +27,7 @@ const CommentSection = ({ comments }) => {
                         value={newComment.username}
                         onChange={({ target: { value } }) => updateNewComment('username', value)} />
                 </div>
-                <div style={{ marginTop: 10, width: '100%' }}>
+                <div style={{ marginTop: 10, marginBottom: 10, width: '100%' }}>
                     <TextField
                         style={{ minWidth: '300px', width: '70%' }}
                         multiline
@@ -36,15 +37,18 @@ const CommentSection = ({ comments }) => {
                         value={newComment.text}
                         onChange={({ target: { value } }) => updateNewComment('text', value)} />
                 </div>
+                <Button color='primary' variant='contained'>ADD COMMENT</Button>
             </div>
-            {
-                comments.map((comment, i) => (
-                    <div key={i}>
-                        <h3>{comment.username}</h3>
-                        <div>{comment.text}</div>
-                    </div>
-                ))
-            }
+            <div style={{ marginTop: 20 }}>
+                {
+                    comments.map((comment, i) => (
+                        <div key={i}>
+                            <h3>{comment.username}</h3>
+                            <div>{comment.text}</div>
+                        </div>
+                    ))
+                }
+            </div>
         </div>
     );
 };
