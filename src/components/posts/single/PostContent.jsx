@@ -1,6 +1,7 @@
 import React from 'react';
 import dateService, { dateFormatTypes } from '../../../service/date.service';
 import Content from './Content';
+import CommentSection from './comments/CommentSection';
 
 const PostContent = ({ post }) => {
     const formattedDate = dateService.formatDate(
@@ -14,6 +15,7 @@ const PostContent = ({ post }) => {
             <div className='date-field'>{formattedDate}</div>
             <img alt={post.title} className='main-image' src={post.imageUrl}/>
             <Content content={post.content}/>
+            <CommentSection comments={JSON.parse(post.comments)}/>
         </div>
     );
 };
