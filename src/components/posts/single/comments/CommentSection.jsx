@@ -52,10 +52,10 @@ const CommentSection = ({ post, addComment }) => {
                     comments.sort((a, b) => b.date - a.date).map((comment, i) => (
                         <div key={i}>
                             <h3>{comment.username}</h3>
-                            <div>{dateService.formatDate(
+                            <div className='comment-date'>{dateService.formatDate(
                                 dateService.getDateFromTime(comment.date), dateFormatTypes.Material
                             )}</div>
-                            <div>{comment.text}</div>
+                            <div className='comment-content'>{comment.text}</div>
                         </div>
                     ))
                 }
