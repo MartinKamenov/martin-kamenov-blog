@@ -56,10 +56,10 @@ const CommentSection = ({ post, addComment }) => {
             <Card style={{ width: 200, margin: 'auto' }}>
                 <CardContent>
                     <Typography className='project-description-text' variant="body2" color="textSecondary" component="p">
-                        Did you like the article?
+                        Do you like the article?
                     </Typography>
-                    <IconButton onClick={updateLocally} aria-label="add to favorites">
-                        <FavoriteIcon color={liked ? 'secondary' : 'action'}/>
+                    <IconButton size='medium' onClick={updateLocally} aria-label="add to favorites">
+                        <FavoriteIcon style={{ fontSize: 40 }} color={liked ? 'secondary' : 'action'}/>
                     </IconButton>
                 </CardContent>
             </Card>
