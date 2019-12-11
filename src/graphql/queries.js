@@ -56,6 +56,21 @@ const queries = {
             likes
             comments
         }
+    }`,
+    UPDATE_COMMENTS_MUTATION: gql`
+    mutation UpdateCommentsMutation($id: String!, $comment: String!) {
+        updateComments(id: $id, comment: $comment) {
+            id
+            title
+            subTitle
+            description
+            created
+            updated
+            imageUrl
+            content
+            likes
+            comments
+        }
     }`
 };
 

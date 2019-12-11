@@ -1,8 +1,9 @@
 import React from 'react';
 import dateService, { dateFormatTypes } from '../../../service/date.service';
 import Content from './Content';
+import CommentSection from './comments/CommentSection';
 
-const PostContent = ({ post }) => {
+const PostContent = ({ post, addComment }) => {
     const formattedDate = dateService.formatDate(
         dateService.getDateFromTime(post.updated),
         dateFormatTypes.Material
@@ -14,6 +15,7 @@ const PostContent = ({ post }) => {
             <div className='date-field'>{formattedDate}</div>
             <img alt={post.title} className='main-image' src={post.imageUrl}/>
             <Content content={post.content}/>
+            <CommentSection addComment={addComment} post={post}/>
         </div>
     );
 };
