@@ -1,10 +1,12 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import TextField from '@material-ui/core/TextField';
 import './CommentSection.css';
-import { Button, CardActions, IconButton, Card, Typography, CardContent } from '@material-ui/core';
+import { Button, IconButton, Card, Typography, CardContent } from '@material-ui/core';
 import CommentComponent from './CommentComponent';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import { useSelector } from 'react-redux';
+import { useMutation } from 'react-apollo';
+import queries from '../../../../graphql/queries';
 
 const CommentSection = ({ post, addComment }) => {
     const comments = JSON.parse(post.comments);
@@ -22,14 +24,32 @@ const CommentSection = ({ post, addComment }) => {
 
     const token = useSelector((state) => state.token);
 
-    const updateLikeLocally = () => {
+    const [updateLikesMutation] = useMutation(queries.UPDATE_LIKES_MUTATION);
+    const updateLikes = useCallback(
+        (id, like) => {
+            updateLikesMutation({
+                variables: {
+                    id,
+                    like: JSON.stringify(like)
+                }
+            });
+        },
+        [updateLikesMutation]
+    );
+
+    const updateLocally = () => {
+        const currentLikeStatus = liked;
         setLiked(!liked);
-    }
+        updateLikes(post.id, {
+            action: currentLikeStatus ? 'remove' : 'add',
+            token
+        });
+    };
 
     useEffect(() => {
         const likes = JSON.parse(post.likes);
         setLiked(!!likes.find(like => like.token === token));
-    }, [token]);
+    }, [token, post]);
 
     return (
         <div className='comment-section-container center-container container'>
@@ -38,7 +58,7 @@ const CommentSection = ({ post, addComment }) => {
                     <Typography className='project-description-text' variant="body2" color="textSecondary" component="p">
                         Did you like the article?
                     </Typography>
-                    <IconButton onClick={updateLikeLocally} aria-label="add to favorites">
+                    <IconButton onClick={updateLocally} aria-label="add to favorites">
                         <FavoriteIcon color={liked ? 'secondary' : 'action'}/>
                     </IconButton>
                 </CardContent>
