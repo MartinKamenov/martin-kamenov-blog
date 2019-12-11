@@ -1,11 +1,14 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import TextField from '@material-ui/core/TextField';
 import './CommentSection.css';
-import { Button } from '@material-ui/core';
+import { Button, CardActions, IconButton, Card, Typography, CardContent } from '@material-ui/core';
 import CommentComponent from './CommentComponent';
+import FavoriteIcon from '@material-ui/icons/Favorite';
+import { useSelector } from 'react-redux';
 
 const CommentSection = ({ post, addComment }) => {
     const comments = JSON.parse(post.comments);
+    const [liked, setLiked] = useState(false);
     const [newComment, setNewComment] = useState({
         username: '',
         text: ''
@@ -17,8 +20,29 @@ const CommentSection = ({ post, addComment }) => {
         setNewComment(commentCopy);
     };
 
+    const token = useSelector((state) => state.token);
+
+    const updateLikeLocally = () => {
+        setLiked(!liked);
+    }
+
+    useEffect(() => {
+        const likes = JSON.parse(post.likes);
+        setLiked(!!likes.find(like => like.token === token));
+    }, [token]);
+
     return (
         <div className='comment-section-container center-container container'>
+            <Card style={{ width: 200, margin: 'auto' }}>
+                <CardContent>
+                    <Typography className='project-description-text' variant="body2" color="textSecondary" component="p">
+                        Did you like the article?
+                    </Typography>
+                    <IconButton onClick={updateLikeLocally} aria-label="add to favorites">
+                        <FavoriteIcon color={liked ? 'secondary' : 'action'}/>
+                    </IconButton>
+                </CardContent>
+            </Card>
             <h2>Comments</h2>
             <div className='new-comment-container'>
                 <div style={{ width: '100%' }}>
