@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import TextField from '@material-ui/core/TextField';
 import './CommentSection.css';
 import { Button } from '@material-ui/core';
-import dateService, { dateFormatTypes } from '../../../../service/date.service';
+import CommentComponent from './CommentComponent';
 
 const CommentSection = ({ post, addComment }) => {
     const comments = JSON.parse(post.comments);
@@ -51,11 +51,7 @@ const CommentSection = ({ post, addComment }) => {
                 {
                     comments.sort((a, b) => b.date - a.date).map((comment, i) => (
                         <div key={i}>
-                            <h3>{comment.username}</h3>
-                            <div className='comment-date'>{dateService.formatDate(
-                                dateService.getDateFromTime(comment.date), dateFormatTypes.Material
-                            )}</div>
-                            <div className='comment-content'>{comment.text}</div>
+                            <CommentComponent comment={comment}/>
                         </div>
                     ))
                 }
