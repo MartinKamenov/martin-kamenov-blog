@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import TextField from '@material-ui/core/TextField';
 import './CommentSection.css';
 import { Button } from '@material-ui/core';
+import dateService, { dateFormatTypes } from '../../../../service/date.service';
 
 const CommentSection = ({ post, addComment }) => {
     const comments = JSON.parse(post.comments);
@@ -26,7 +27,13 @@ const CommentSection = ({ post, addComment }) => {
                         label="Name"
                         variant="outlined"
                         value={newComment.username}
-                        onChange={({ target: { value } }) => updateNewComment('username', value)} />
+                        onChange={({ target: { value } }) => {
+                            setNewComment({
+                                username: '',
+                                text: ''
+                            });
+                            updateNewComment('username', value);}
+                        } />
                 </div>
                 <div style={{ marginTop: 10, marginBottom: 10, width: '100%' }}>
                     <TextField
@@ -42,9 +49,12 @@ const CommentSection = ({ post, addComment }) => {
             </div>
             <div style={{ marginTop: 20 }}>
                 {
-                    comments.map((comment, i) => (
+                    comments.sort((a, b) => b.date - a.date).map((comment, i) => (
                         <div key={i}>
                             <h3>{comment.username}</h3>
+                            <div>{dateService.formatDate(
+                                dateService.getDateFromTime(comment.date), dateFormatTypes.Material
+                            )}</div>
                             <div>{comment.text}</div>
                         </div>
                     ))

@@ -16,14 +16,23 @@ const SinglePost = ({ match: { params: { id } }}) => {
     const [updateCommentsMutation, { data: updatedData }] = useMutation(queries.UPDATE_COMMENTS_MUTATION);
     const addComment = useCallback(
         (comment) => {
+            const date = new Date();
+            comment.date = date.getTime();
+            const variables = {
+                id,
+                comment: JSON.stringify(comment),
+            };
+            const postCopy = {...post};
+            const comments = JSON.parse(post.comments);
+            comments.push({
+                ...comment
+            });
+            postCopy.comments = JSON.stringify(comments);
             updateCommentsMutation({
-                variables: {
-                    id,
-                    comment: JSON.stringify(comment)
-                }
+                variables
             });
         },
-        [updateCommentsMutation, id]
+        [updateCommentsMutation, id, post]
     );
 
     useEffect(() => {
