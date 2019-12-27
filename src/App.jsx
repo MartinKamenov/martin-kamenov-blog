@@ -26,7 +26,7 @@ const reducer = (state = { token }, action) => {
 const store = createStore(reducer);
 
 const apolloClient = new ApolloClient({
-    uri: 'https://martin-kamenov-blog-api.herokuapp.com/graphql'
+    uri: 'https://tihomir-kamenov-blog-api.herokuapp.com/graphql'
 });
 
 const App = () => (

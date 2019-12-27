@@ -9,7 +9,7 @@ const CustomNavbar = () => {
             <div className='left-navbar-container'>
                 <Link style={{ textDecoration: 'none' }} className='navbar-element' to='/'>
                     <h4 className='nav-text btn-5'>
-                        Martin's blog
+                        Tiho's blog
                     </h4>
                 </Link>
             </div>
