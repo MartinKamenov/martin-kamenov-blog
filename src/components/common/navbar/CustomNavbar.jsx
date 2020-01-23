@@ -1,13 +1,15 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import './Navbar.css';
 import { Link } from 'react-router-dom';
 import Switch from '../../common/switch/Switch';
 import './CustomButtonStyle.css';
 import modeType from './modeType';
+import ModeContext from '../../../contexts/ModeContext';
 
 const CustomNavbar = ({ isChecked, toggleSwitch }) => {
+    const { mode } = useContext(ModeContext);
     return (
-        <div className='navbar-container'>
+        <div className={`navbar-container navbar-container-${mode}-mode`}>
             <div className='left-navbar-container'>
                 <Link style={{ textDecoration: 'none' }} className='navbar-element' to='/'>
                     <h4 className='nav-text btn-5'>

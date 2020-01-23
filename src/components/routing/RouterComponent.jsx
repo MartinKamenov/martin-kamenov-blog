@@ -15,6 +15,7 @@ const RouterComponent = () => {
     const [isChecked, onSwitch] = useState(false);
 
     const toggleSwitch = () => {
+        document.body.style.background = !isChecked ? '#212020' : 'white';
         onSwitch(!isChecked);
     }
 

@@ -83,7 +83,7 @@ const PostList = () => {
             <div className='row slow-transition-container'>
                 {
                     posts.map((post) => (
-                        <div key={post.id} className='col-md-4 col-sm-6'>
+                        <div key={post.id} className='col-md-4 col-sm-6 col-xs-12'>
                             <PostDetails handleLikeClick={handleLikeClick} post={post}/>
                         </div>
                     ))
