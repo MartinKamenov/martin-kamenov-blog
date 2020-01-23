@@ -1,9 +1,12 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import Button from '@material-ui/core/Button';
 
 import './Home.css';
+import Footer from '../common/footer/Footer';
+import ModeContext from '../../contexts/ModeContext';
 
 const Home = ({ history }) => {
+    const { mode } = useContext(ModeContext);
     const navigateToBlog = () => {
         history.push('/posts');
     };
@@ -14,8 +17,9 @@ const Home = ({ history }) => {
 
     return (
         <>
-            <div className='home-background-container'></div>
-            <div className='home-container center-container slow-transition-container'>
+            <div className={`home-background-container-${mode}-mode`}></div>
+            <div className={'home-container center-container slow-transition-container '
+                + `home-container-${mode}-mode`}>
                 <h1 className='home-header'>My blog</h1>
                 <Button onClick={navigateToBlog} variant="outlined" color='secondary'>
                     Blog posts
@@ -24,6 +28,7 @@ const Home = ({ history }) => {
                     My profile
                 </Button>
             </div>
+            <Footer/>
         </>
     );
 };

@@ -1,3 +1,15 @@
 .MuiCardHeader-subheader {
     white-space: pre-line;
 }
+
+.MuiCardHeader-title {
+    color: black;
+}
+
+/* .MuiCardActions-root * {
+    color: initial;
+}
+
+.MuiCollapse-container * {
+    color: initial;
+} */

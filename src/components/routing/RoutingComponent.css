@@ -1,0 +1,22 @@
+.container-night-mode {
+    width: 100%;
+    background-color: #212020;
+}
+
+.container-night-mode .company-name,
+.container-night-mode li,
+.container-night-mode h2,
+.container-night-mode .content-element,
+.container-night-mode input,
+.container-night-mode textarea,
+.container-night-mode .date-field,
+.container-night-mode h1,
+.container-night-mode h5,
+.container-night-mode .loading-message-text {
+    color: white;
+}
+
+.container-day-mode {
+    width: 100%;
+    background-color: #ffffff;
+}

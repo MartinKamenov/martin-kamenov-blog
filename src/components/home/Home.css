@@ -1,4 +1,4 @@
-.home-background-container {
+.home-background-container-day-mode {
     background: url(https://images.pexels.com/photos/238118/pexels-photo-238118.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940);
     height: 100vh;
     width: 100%;
@@ -10,6 +10,24 @@
     top: 0;
     left: 0;
     z-index: -1;
+}
+
+.home-background-container-night-mode {
+    background: url(https://images.pexels.com/photos/1229861/pexels-photo-1229861.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940);
+    height: 100vh;
+    width: 100%;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    background-size: 110% 120vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: -1;
+}
+
+.home-container-night-mode .home-header {
+    color: white;
 }
 
 .home-container {

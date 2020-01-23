@@ -4,6 +4,7 @@ import { useSelector } from 'react-redux';
 import queries from '../../graphql/queries';
 import PostDetails from './PostDetails';
 import Progressbar from '../common/loading/Progressbar';
+import Footer from '../common/footer/Footer';
 
 const PostList = () => {
     const [runQuery, { data }] = useLazyQuery(queries.ALL_POSTS_QUERY);
@@ -73,23 +74,26 @@ const PostList = () => {
 
     if(!data || !data.posts) {
         return (
-            <div className='container' style={{ marginTop: 10 }}>
+            <div className='container' style={{ paddingTop: 10 }}>
                 <Progressbar message='Fetching posts'/>
             </div>
         );
     }
     return (
-        <div className='container' style={{ marginTop: 10 }}>
+        <>
+        <div className='container' style={{ paddingTop: 10 }}>
             <div className='row slow-transition-container'>
                 {
                     posts.map((post) => (
-                        <div key={post.id} className='col-md-4 col-sm-6'>
+                        <div key={post.id} className='col-md-4 col-sm-6 col-xs-12'>
                             <PostDetails handleLikeClick={handleLikeClick} post={post}/>
                         </div>
                     ))
                 }
             </div>
         </div>
+        <Footer hasMode/>
+        </>
     );
 };
  
