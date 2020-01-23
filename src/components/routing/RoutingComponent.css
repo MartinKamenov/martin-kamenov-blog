@@ -11,7 +11,8 @@
 .container-night-mode textarea,
 .container-night-mode .date-field,
 .container-night-mode h1,
-.container-night-mode h5 {
+.container-night-mode h5,
+.container-night-mode .loading-message-text {
     color: white;
 }
 

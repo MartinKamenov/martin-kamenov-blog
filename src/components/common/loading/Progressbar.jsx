@@ -11,7 +11,7 @@ const Progressbar = ({ message, color }) => (
         textAlign: 'center'
     }} className='black-content'>
         <CircularProgress color={color || 'secondary'} />
-        <div>{message || 'Loading'}</div>
+        <div className='loading-message-text'>{message || 'Loading'}</div>
     </div>
 );
 

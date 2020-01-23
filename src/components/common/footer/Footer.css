@@ -9,3 +9,11 @@
 .footer-container-night-mode {
     color: white;
 }
+
+.footer-header-day-mode {
+    color: #212020;
+}
+
+.footer-header-night-mode {
+    color: white;
+}
