@@ -29,3 +29,8 @@
     color: white;
     padding: 3px;
 }
+
+.mode-img {
+    display: inline-block;
+    background-color: white;
+}

@@ -1,9 +1,11 @@
 import React from 'react';
 import './Navbar.css';
 import { Link } from 'react-router-dom';
+import Switch from '../../common/switch/Switch';
 import './CustomButtonStyle.css';
+import modeType from './modeType';
 
-const CustomNavbar = () => {
+const CustomNavbar = ({ isChecked, toggleSwitch }) => {
     return (
         <div className='navbar-container'>
             <div className='left-navbar-container'>
@@ -15,6 +17,10 @@ const CustomNavbar = () => {
             </div>
             <div className='right-navbar-container'>
                 <div className='nav'>
+                    <div style={{ height: 40 }}>
+                        <img className='mode-img' width={35} height={35} src={modeType.getModeImage(isChecked)}></img>
+                        <Switch isChecked={isChecked} onSwitch={toggleSwitch} />
+                    </div>
                     <div style={{ height: 40 }}>
                         <Link to='/posts' style={{ textDecoration: 'none' }}>
                             Posts

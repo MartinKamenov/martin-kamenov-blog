@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Home from '../home/Home';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 
@@ -11,9 +11,14 @@ import CustomNavbar from '../common/navbar/CustomNavbar';
 import Footer from '../common/footer/Footer';
 
 const RouterComponent = () => {
+    const [isChecked, onSwitch] = useState(false);
+
+    const toggleSwitch = () => {
+        onSwitch(!isChecked);
+    }
     return (
         <Router>
-            <CustomNavbar/>
+            <CustomNavbar isChecked={isChecked} toggleSwitch={toggleSwitch}/>
             <Route exact path="/" component={Home} />
             <Route exact path="/posts" component={PostList} />
             <Route exact path="/aboutme" component={AboutMe} />
