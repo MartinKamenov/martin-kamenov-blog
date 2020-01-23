@@ -17,7 +17,7 @@ const Home = ({ history }) => {
 
     return (
         <>
-            <div className={'home-background-container ' + `home-background-container-${mode}-mode`}></div>
+            <div className={`home-background-container-${mode}-mode`}></div>
             <div className={'home-container center-container slow-transition-container '
                 + `home-container-${mode}-mode`}>
                 <h1 className='home-header'>My blog</h1>

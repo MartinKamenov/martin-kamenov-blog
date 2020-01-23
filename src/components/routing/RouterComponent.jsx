@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Home from '../home/Home';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 
@@ -11,14 +11,22 @@ import CustomNavbar from '../common/navbar/CustomNavbar';
 import ModeContext from '../../contexts/ModeContext';
 
 const RouterComponent = () => {
-    const [isChecked, onSwitch] = useState(false);
+    const [isChecked, setChecked] = useState(false);
 
     const toggleSwitch = () => {
-        document.body.style.background = !isChecked ? '#212020' : 'white';
-        onSwitch(!isChecked);
+        const newValue = !isChecked;
+        localStorage.setItem('mode', newValue ? 'night' : 'day');
+        document.body.style.background = newValue ? '#212020' : 'white';
+        setChecked(newValue);
     }
 
-    
+    useEffect(() => {
+        const mode = localStorage.getItem('mode');
+        const initialChecked = (mode === 'night');
+        document.body.style.background = initialChecked ? '#212020' : 'white';
+        setChecked(initialChecked);
+    }, []);
+
     return (
         <ModeContext.Provider value={{ mode: isChecked ? 'night': 'day'}}>
             <Router>
