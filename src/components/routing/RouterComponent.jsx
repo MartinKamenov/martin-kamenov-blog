@@ -9,6 +9,7 @@ import './RoutingComponent.css';
 import PostList from '../posts/PostsList';
 import CustomNavbar from '../common/navbar/CustomNavbar';
 import Footer from '../common/footer/Footer';
+import ModeContext from '../../contexts/ModeContext';
 
 const RouterComponent = () => {
     const [isChecked, onSwitch] = useState(false);
@@ -16,15 +17,21 @@ const RouterComponent = () => {
     const toggleSwitch = () => {
         onSwitch(!isChecked);
     }
+
+    
     return (
-        <Router>
-            <CustomNavbar isChecked={isChecked} toggleSwitch={toggleSwitch}/>
-            <Route exact path="/" component={Home} />
-            <Route exact path="/posts" component={PostList} />
-            <Route exact path="/aboutme" component={AboutMe} />
-            <Route path="/posts/:id" component={SinglePost} />
-            <Footer/>
-        </Router>
+        <ModeContext.Provider value={{ mode: isChecked ? 'night': 'day'}}>
+            <Router>
+                <CustomNavbar isChecked={isChecked} toggleSwitch={toggleSwitch}/>
+                <Route exact path="/" component={Home} />
+                <div className={`container-${isChecked ? 'night': 'day'}-mode`}>
+                    <Route exact path="/posts" component={PostList} />
+                    <Route exact path="/aboutme" component={AboutMe} />
+                    <Route path="/posts/:id" component={SinglePost} />
+                </div>
+                <Footer/>
+            </Router>
+        </ModeContext.Provider>
     );
 };
  

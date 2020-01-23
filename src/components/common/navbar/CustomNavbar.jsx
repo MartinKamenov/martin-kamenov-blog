@@ -18,7 +18,12 @@ const CustomNavbar = ({ isChecked, toggleSwitch }) => {
             <div className='right-navbar-container'>
                 <div className='nav'>
                     <div style={{ height: 40 }}>
-                        <img className='mode-img' width={35} height={35} src={modeType.getModeImage(isChecked)}></img>
+                        <img
+                            alt='mode'
+                            className='mode-img'
+                            width={35}
+                            height={35}
+                            src={modeType.getModeImage(isChecked)}></img>
                         <Switch isChecked={isChecked} onSwitch={toggleSwitch} />
                     </div>
                     <div style={{ height: 40 }}>

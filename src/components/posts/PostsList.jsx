@@ -73,13 +73,13 @@ const PostList = () => {
 
     if(!data || !data.posts) {
         return (
-            <div className='container' style={{ marginTop: 10 }}>
+            <div className='container' style={{ paddingTop: 10 }}>
                 <Progressbar message='Fetching posts'/>
             </div>
         );
     }
     return (
-        <div className='container' style={{ marginTop: 10 }}>
+        <div className='container' style={{ paddingTop: 10 }}>
             <div className='row slow-transition-container'>
                 {
                     posts.map((post) => (
