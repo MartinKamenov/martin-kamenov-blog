@@ -6,6 +6,7 @@ import Progressbar from '../common/loading/Progressbar';
 
 import './AboutMe.css';
 import Company from './Company';
+import Footer from '../common/footer/Footer';
 
 const AboutMe = () => {
     const [runQuery, { data }] = useLazyQuery(queries.MY_PROFILE_QUERY);
@@ -38,6 +39,7 @@ const AboutMe = () => {
                     </div>
                 </div>
             ) : (<Progressbar message='Fetching profile'/>)}
+            <Footer hasMode/>
         </>
         
     );

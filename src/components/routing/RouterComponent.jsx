@@ -8,7 +8,6 @@ import AboutMe from '../about-me/AboutMe';
 import './RoutingComponent.css';
 import PostList from '../posts/PostsList';
 import CustomNavbar from '../common/navbar/CustomNavbar';
-import Footer from '../common/footer/Footer';
 import ModeContext from '../../contexts/ModeContext';
 
 const RouterComponent = () => {
@@ -30,7 +29,6 @@ const RouterComponent = () => {
                     <Route exact path="/aboutme" component={AboutMe} />
                     <Route path="/posts/:id" component={SinglePost} />
                 </div>
-                <Footer/>
             </Router>
         </ModeContext.Provider>
     );

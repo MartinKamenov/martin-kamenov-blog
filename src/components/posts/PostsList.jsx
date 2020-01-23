@@ -4,6 +4,7 @@ import { useSelector } from 'react-redux';
 import queries from '../../graphql/queries';
 import PostDetails from './PostDetails';
 import Progressbar from '../common/loading/Progressbar';
+import Footer from '../common/footer/Footer';
 
 const PostList = () => {
     const [runQuery, { data }] = useLazyQuery(queries.ALL_POSTS_QUERY);
@@ -79,6 +80,7 @@ const PostList = () => {
         );
     }
     return (
+        <>
         <div className='container' style={{ paddingTop: 10 }}>
             <div className='row slow-transition-container'>
                 {
@@ -90,6 +92,8 @@ const PostList = () => {
                 }
             </div>
         </div>
+        <Footer hasMode/>
+        </>
     );
 };
  

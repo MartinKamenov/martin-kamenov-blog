@@ -1,14 +1,17 @@
 import React, { useContext } from 'react';
 import { FaFacebook, FaTwitter, FaGoogle } from 'react-icons/fa';
 import ModeContext from '../../../contexts/ModeContext';
+import PropTypes from 'prop-types';
 
 import './Footer.css';
 import './SocialButtons.css';
 
-const Footer = () => {
+const Footer = ({ hasMode }) => {
     const {mode} = useContext(ModeContext);
+    
     return (
-        <nav className={`social-btn-container slow-transition-container footer-container-${mode}-mode`}>
+        <nav className={`social-btn-container slow-transition-container ` + 
+            (hasMode ? `footer-container-${mode}-mode` : '')}>
             <div className='social-btns'>
                 <h3>Find me on social media</h3>
                 <a
@@ -29,5 +32,9 @@ const Footer = () => {
         </nav>
     );
 };
- 
+
+Footer.propTypes = {
+    hasMode: PropTypes.bool
+}
+
 export default Footer;

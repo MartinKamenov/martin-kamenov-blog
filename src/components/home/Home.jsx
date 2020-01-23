@@ -2,6 +2,7 @@ import React from 'react';
 import Button from '@material-ui/core/Button';
 
 import './Home.css';
+import Footer from '../common/footer/Footer';
 
 const Home = ({ history }) => {
     const navigateToBlog = () => {
@@ -24,6 +25,7 @@ const Home = ({ history }) => {
                     My profile
                 </Button>
             </div>
+            <Footer/>
         </>
     );
 };
