@@ -1,5 +1,4 @@
 .generic-image {
-    width: calc(100% - 200px);
     margin: auto;
     border-radius: 20px;
     max-width: 500px;
@@ -15,9 +14,31 @@
     font-style: italic;
 }
 
+@media only screen and (min-width: 768px) {
+    .content-element {
+        width: calc(100% - 200px);
+    }
+
+    .generic-image {
+        width: calc(100% - 200px);
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .content-element {
+        width: 90%;
+    }
+
+    .generic-image {
+        width: 90%;
+    }
+
+    .main-image {
+        width: 90%;
+    }
+}
 .content-element {
     text-align: left;
-    width: calc(100% - 200px);
     max-width: 700px;
     margin: auto;
     margin-bottom: 5px;
