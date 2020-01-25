@@ -15,14 +15,39 @@
 
 .left-navbar-container {
     float: left;
-    margin-left: 10%;
     height: 40px;
 }
 
 .right-navbar-container {
     float: right;
-    margin-right: 10%;
     height: 40px;
+}
+
+@media only screen and (min-width: 768px) {
+    .left-navbar-container {
+        margin-left: 10%;
+    }
+    .right-navbar-container {
+        margin-right: 10%;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .left-navbar-container * {
+        font-size: 15px;
+    }
+    .right-navbar-container {
+        font-size: 12px;
+    }
+}
+
+@media only screen and (max-width: 400px) {
+    .left-navbar-container * {
+        font-size: 13px;
+    }
+    .right-navbar-container {
+        font-size: 10px;
+    }
 }
 
 .navbar-element {
