@@ -62,6 +62,6 @@ const SwitchComponent = ({ isChecked, onSwitch }) => {
             onChange={onSwitch}
         />
     );
-}
+};
  
 export default SwitchComponent;

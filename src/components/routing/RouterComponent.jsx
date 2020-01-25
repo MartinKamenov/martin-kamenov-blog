@@ -18,7 +18,7 @@ const RouterComponent = () => {
         localStorage.setItem('mode', newValue ? 'night' : 'day');
         document.body.style.background = newValue ? '#212020' : 'white';
         setChecked(newValue);
-    }
+    };
 
     useEffect(() => {
         const mode = localStorage.getItem('mode');
